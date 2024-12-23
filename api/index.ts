@@ -1,11 +1,26 @@
-const express = require("express");
+const express = require('express');
+const bodyParser = require('body-parser');
+const sequelize = require('../config/database');
+const programRoutes = require('../routes/programRoutes');
+
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-    res.send("Hello from Express!");
-});
+const PORT = 5000;
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+// Middleware
+app.use(bodyParser.json());
+
+// Routes
+app.use('/api', programRoutes);
+
+// Sync database and start the server
+sequelize.sync()
+  .then(() => {
+    console.log('Database synced');
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.log('Failed to sync database:', error);
+  });
