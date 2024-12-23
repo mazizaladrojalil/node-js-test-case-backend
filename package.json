@@ -15,12 +15,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@netlify/functions": "^3.0.0",
     "@types/express": "^5.0.0",
     "body-parser": "^1.20.3",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mysql2": "^3.11.5",
-    "sequelize": "^6.37.5",
-    "serverless-http": "^3.2.0"
+    "sequelize": "^6.37.5"
   }
 }

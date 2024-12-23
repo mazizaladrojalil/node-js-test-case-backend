@@ -4,4 +4,4 @@ request.rest
 .vercel
 
 # Local Netlify folder
-.netlify
+.env
